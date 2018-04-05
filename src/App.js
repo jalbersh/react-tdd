@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PersonList from './PersonList';
 
 export default class App extends Component {
 
@@ -17,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <PersonList people={this.state.people} />
+        I am the app!
       </div>
     );
   }
