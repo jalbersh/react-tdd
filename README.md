@@ -23,11 +23,11 @@ TDD is a requirement in modern software development. The functional nature of Re
 
 This repo contains an empty react app. Your job is to implement the following user stories in TDD fashion:
 
-1. Given a browser, when I browse to the site, then I see an "Add Person" button.
-1. Given I see the "Add Person" button, when I click it, then I am taken to an Add Person page.
-1. Given I am on the Add Person page, when I fill in the fields and click "Add", I am taken back to the list page.
-1. Given that I have added a person, when I am on the list page, then I see my people.
-1. Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
+x-1. Given a browser, when I browse to the site, then I see an "Add Person" button.
+x-1. Given I see the "Add Person" button, when I click it, then I am taken to an Add Person page.
+x-1. Given I am on the Add Person page, when I fill in the fields and click "Add", I am taken back to the list page.
+x-1. Given that I have added a person, when I am on the list page, then I see my people.
+x-1. Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
 1. Given I am on the person edit page, when I change a persons name and click Save, then I am taken back to the list page.
 1. Given that I have made updates to people, when I am on the list page, I should see the modified information.
 1. Given that I am on the edit page, then I see a delete button.

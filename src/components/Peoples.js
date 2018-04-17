@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 //import { connect } from 'react-redux'
+//import store from '../utils/store'
 
-class People extends Component {
+class Peoples extends Component {
   constructor(props) {
         super(props);
         this.state={people: this.props.people}
+        this.rowClick = this.rowClick.bind(this)
   }
 
-//  async componentDidMount() {
-//        console.log('People.componentDidMount state',this.state, 'props', this.props)
-//        store.dispatch({type: GET_PEOPLE, people:this.state.people})
-//  }
+  rowClick(e) {
+        e.preventDefault()
+        console.log('in rowClick')
+        const target = e.target
+        const parent = target.parentNode
+        const cells = parent.cells
+        const firstName = cells && cells[0].childNodes ? cells[0].childNodes[0].data : null
+        const lastName = cells && cells[1].childNodes ? cells[1].childNodes[0].data : null
+        let person = null
+        if (firstName && lastName) {
+            person = {firstName,lastName}
+            console.log('person',person)
+        }
+        this.props.history.push('/editPerson',{people: this.state.people, person: person})
+  }
 
   render() {
 //    console.log('People render props',this.props,'state',this.state)
@@ -24,8 +37,9 @@ class People extends Component {
            people = sp
     }
 //    console.log('people',people)
+// Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
     return (
-      <table className="myClass">
+      <table className="myClass" onClick={this.rowClick}>
         <thead>
           <tr>
             <th>First</th>
@@ -59,4 +73,4 @@ class People extends Component {
 //  null
 //)(People);
 
-export default People
+export default Peoples

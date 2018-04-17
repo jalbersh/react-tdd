@@ -7,12 +7,10 @@ import App from '../App';
 import MockRouter from 'react-mock-router';
 import { Router, Route } from 'react-router-dom'
 import {browserHistory} from 'react-router';
+import { history } from '../utils/history';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux'
-import renderer from 'react-test-renderer';
-import { fromJS } from 'immutable';
-import { history } from '../utils/history';
 
 describe("for the App", () => {
 
@@ -93,15 +91,10 @@ describe("for the App", () => {
           <Provider store={store}>
             <App history={history}/>
           </Provider>)
-        const instance = wrapper.instance();
-//        wrapper.setProps({ history: { push } });
+        wrapper.setProps({ history: { push } });
         wrapper.find('button').simulate('click');
         expect(history.push).toHaveBeenCalled;
         console.assert(location.pathname === '/addPerson')
   })
 
-//  3. Given that I have added a person, when I am on the list page, then I see my people.
-  it('after I add a person, I see the new person in the people list',() => {
-
-  })
 })

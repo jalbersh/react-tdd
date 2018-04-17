@@ -1,7 +1,8 @@
 // in src/reducers/person.js
 import {
         ADD_PERSON_STARTED,
-        ADD_PERSON_SUCCESS
+        ADD_PERSON_SUCCESS,
+        SET_PERSON
         } from '../utils/constants'
 
 const initialState = {
@@ -21,6 +22,13 @@ export default (state = initialState, action) => {
         case ADD_PERSON_SUCCESS:
 //            console.log('ADD_PERSON_SUCCESS(person)',action)
             return action.person
+        case SET_PERSON:
+//            console.log('SET_PERSON(person)',action)
+            const person = action.person
+            if (person) {
+                return person
+            }
+            return state
         default:
             return state
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import People from './components/People'
+import Peoples from './components/Peoples'
 //import store from './utils/store'
 import { connect } from 'react-redux'
 
@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className="App">
         <button className="addPerson" onClick={this.handleClick}>Add Person</button>
-        <People people={people} />
+        <Peoples people={people} history={ this.props.history } />
       </div>
     )
   }

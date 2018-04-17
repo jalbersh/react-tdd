@@ -10,35 +10,48 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { handleAdd } from '../actions/actions'
+import { handleEdit } from '../actions/actions'
 import store from '../utils/store'
-import { GET_PEOPLE } from '../utils/constants'
+import {
+        SET_PERSON
+        } from '../utils/constants'
 
-class AddPerson extends Component {
+class EditPerson extends Component {
 
   constructor(props) {
       super(props)
       this.submitHandler = this.submitHandler.bind(this)
-      this.state={people: this.props.people}
+      this.state={
+//        people: this.props.people,
+        person: this.props.person
+      }
   }
 
-  componentWillMount() {
-//        console.log('AddPerson.componentWillMount state',this.state, 'props', this.props)
-        const people = this.props.location.state.people
-        store.dispatch({type: GET_PEOPLE, people:people})
+  componentDidMount() {
+//        console.log('EditPerson.componentDidMount state',this.state, 'props', this.props)
+//        const people = this.props && this.props.history && this.props.history.location && this.props.history.location.state ? this.props.history.location.state.people : null
+        const person = this.props && this.props.history && this.props.history.location && this.props.history.location.state ? this.props.history.location.state.person : null
+//        console.log('people',people)
+        if (person) {
+            store.dispatch({type: SET_PERSON, person})
+        }
+//        store.dispatch({type: GET_PEOPLE, people:this.state.people})
   }
 
   submitHandler(e) {
         e.preventDefault()
         e.target.reset()
         const fname = this.state.fname
+//        console.log('fname',fname)
         const lname = this.state.lname
+//        console.log('lname',lname)
         this.props.history.push('/')
-        store.dispatch(handleAdd({firstName: fname, lastName: lname}))
+//        store.dispatch({type: ADD_PERSON_SUCCESS, people: this.props.people, person: {firstName: fname, lastName: lname}})
+        store.dispatch(handleEdit({firstName: fname, lastName: lname}))
   }
 
   render() {
-//    console.log('AddPerson.render props',this.props,'state',this.state)
+//    console.log('EditPerson.render props',this.props,'state',this.state)
     return (
       <div>
         <Row style={{ marginTop: '15vh' }}>
@@ -58,7 +71,8 @@ class AddPerson extends Component {
                   name="fname"
                   id="fname-field"
                   placeholder="first name"
-                  value={this.props.fname}
+                  defaultValue=""
+                  value={this.props && this.props.person ? this.props.person.firstName : ''}
                   onChange={e => this.setState({fname: e.target.value})}
                 />
               </FormGroup>
@@ -69,12 +83,13 @@ class AddPerson extends Component {
                   name="lname"
                   id="lname-field"
                   placeholder="last name"
-                  value={this.props.lname}
+                  defaultValue=""
+                  value={this.props && this.props.person ? this.props.person.lastName : ''}
                   onChange={e => this.setState({lname: e.target.value})}
                 />
               </FormGroup>
               <Button className="mr-3" type="submit" color="primary">
-                Add
+                Edit
               </Button>
             </Form>
           </Col>
@@ -84,20 +99,18 @@ class AddPerson extends Component {
   }
 }
 
-//function mapStateToProps(state) {
-//  return {
-//    lname: state.lname,
-//    fname: state.fname
-////    ,
-////    people: state.people
-//  }
-//}
-
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
   return {
-    handleAdd: bindActionCreators(handleAdd, dispatch)
+    person: state.person || {firstName:'', lastName:''}
+//    ,people: state.people
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddPerson)
+function mapDispatchToProps(dispatch) {
+  return {
+    handleEdit: bindActionCreators(handleEdit, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPerson)
 //export default AddPerson
