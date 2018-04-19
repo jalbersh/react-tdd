@@ -24,8 +24,10 @@ class AddPerson extends Component {
 
   componentWillMount() {
 //        console.log('AddPerson.componentWillMount state',this.state, 'props', this.props)
-        const people = this.props.location.state.people
-        store.dispatch({type: GET_PEOPLE, people:people})
+        const people = this.props && this.props.location && this.props.location.state ? this.props.location.state.people : null
+        if (people) {
+            store.dispatch({type: GET_PEOPLE, people:people})
+        }
   }
 
   submitHandler(e) {

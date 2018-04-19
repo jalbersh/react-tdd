@@ -16,10 +16,14 @@
  }
 
  export function handleEdit(name) {
-//    console.log('in action.handleEdit',name,store.getState())
+//    console.log('in action handleEdit',name)
+    const state = store.getState()
+    const person = state.person
+    const people = state.people
+//    console.log('in action.handleEdit',name,'person',person,'people',people)
     return async (dispatch) => {
-//        console.log('dispatching EDIT_PERSON_STARTED with',name,store.getState().people)
-        dispatch({type: EDIT_PERSON_SUCCESS, person: name, people: store.getState().people})
+//        console.log('dispatching EDIT_PERSON_STARTED with',name,person,people)
+        dispatch({type: EDIT_PERSON_SUCCESS, person: name, old_name: person, people: people})
     }
  }
 

@@ -51,6 +51,10 @@ describe("for the EditPerson component", () => {
           expect(first).toBeDefined();
           const second = wrapper.find('input').last();
           expect(second).toBeDefined();
+//          console.log('first',wrapper.find('input').first().props().value)
+//          console.log(wrapper.find('input').first().node.value)
+//          console.log('last',wrapper.find('input').last().props().value)
+//          console.log(wrapper.find('input').last().node.value)
     })
 
     it('Edit renders button', () => {
@@ -76,4 +80,34 @@ describe("for the EditPerson component", () => {
       button.simulate('click');
       expect(callback).toHaveBeenCalled;
     });
+
+// 1. Given I am on the person edit page, when I change a persons name and click Save, then I am taken back to the list page.
+    it('on click, changes the person\'s name and goes back to the list page', () => {
+      const callback = spy();
+      const button = wrapper.find('button').first();
+      button.simulate('click');
+      expect(callback).toHaveBeenCalled;
+      expect(history.push).toHaveBeenCalled;
+      assert(location.pathname === '/')
+    })
+
+//1. Given that I am on the edit page, then I see a delete button.
+    it('find event when click submit', () => {
+      const callback = spy();
+      const button = wrapper.find('button').last();
+      expect(button.text()).toEqual('Delete')
+    });
+
+//1. Given that I am on the edit page, when I click the delete button, then I am taken back to the list page.
+    it('when I click the delete button, it goes back to the list page', () => {
+      const callback = spy();
+      const button = wrapper.find('button').last();
+      expect(button.text()).toEqual('Delete')
+      button.simulate('click');
+      expect(callback).toHaveBeenCalled;
+      expect(history.push).toHaveBeenCalled;
+      assert(location.pathname === '/')
+    })
+
+
 })

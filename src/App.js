@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Peoples from './components/Peoples'
-//import store from './utils/store'
+import store from './utils/store'
 import { connect } from 'react-redux'
+import {
+    GET_PEOPLE
+        } from './utils/constants'
 
 class App extends Component {
 
@@ -18,20 +21,22 @@ class App extends Component {
       this.handleAdd = this.handleAdd.bind(this)
   }
 
-//  componentWillMount() {
-//        console.log('in app.componentWillMount')
-//  }
+  componentWillMount() {
+//        console.log('in app.componentWillMount',this.props,this.state)
+        store.dispatch({type: GET_PEOPLE, people:this.state.people})
+  }
 
   handleAdd(person) {
-    console.log('in app.handleAdd',person,this.props,this.state)
+//    console.log('in app.handleAdd',person,this.props,this.state)
     const people = this.state.people
     if (people && people.length > 0) {
         const newPeople = people.slice();
         if (person) {
            newPeople.push(person);
         }
-        console.log('new people',newPeople)
-        this.setState({people: newPeople})
+//        console.log('new people',newPeople)
+        store.dispatch({type: GET_PEOPLE, people:newPeople})
+//        this.setState({people: newPeople})
     }
   }
 
@@ -45,7 +50,7 @@ class App extends Component {
     const sp = this.state.people
     let people
     if (pp) {
-           people = pp.length > sp.length ? pp : sp
+           people = pp
     }  else {
            people = sp
     }

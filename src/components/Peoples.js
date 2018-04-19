@@ -11,7 +11,7 @@ class Peoples extends Component {
 
   rowClick(e) {
         e.preventDefault()
-        console.log('in rowClick')
+//        console.log('in rowClick')
         const target = e.target
         const parent = target.parentNode
         const cells = parent.cells
@@ -20,7 +20,7 @@ class Peoples extends Component {
         let person = null
         if (firstName && lastName) {
             person = {firstName,lastName}
-            console.log('person',person)
+//            console.log('person',person)
         }
         this.props.history.push('/editPerson',{people: this.state.people, person: person})
   }
@@ -50,10 +50,10 @@ class Peoples extends Component {
           {people.map((item, index) => (
             <tr key={index}>
               <td>
-                {item.firstName}
+                {item ? item.firstName : 'first'}
               </td>
               <td>
-                {item.lastName}
+                {item ? item.lastName : 'last'}
               </td>
             </tr>
           ))}

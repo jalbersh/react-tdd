@@ -1,8 +1,6 @@
 // in src/reducers/person.js
 import {
-        ADD_PERSON_STARTED,
-        ADD_PERSON_SUCCESS,
-        SET_PERSON
+        SET_OLD_PERSON
         } from '../utils/constants'
 
 const initialState = {}
@@ -14,14 +12,8 @@ export default (state = initialState, action) => {
         return state
   }
   switch (action.type) {
-        case ADD_PERSON_STARTED:
-//            console.log('ADD_PERSON_STARTED(person)',action)
-            return state
-        case ADD_PERSON_SUCCESS:
-//            console.log('ADD_PERSON_SUCCESS(person),returning',action.person)
-            return action.person
-        case SET_PERSON:
-//            console.log('SET_PERSON(person)',action)
+        case SET_OLD_PERSON:
+//            console.log('SET_OLD_PERSON(person)',action)
             const person = action.person
             if (person) {
                 return person
