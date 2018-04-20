@@ -29,14 +29,11 @@ class EditPerson extends Component {
         person: this.props.person,
         fname: this.props.person.firstName,
         lname: this.props.person.lastName
-//        ,old_person: this.props.old_person
       }
-//      console.log('props',this.props)
   }
 
   componentDidMount() {
 //        console.log('EditPerson.componentDidMount state',this.state, 'props', this.props)
-//        const people = this.props && this.props.history && this.props.history.location && this.props.history.location.state ? this.props.history.location.state.people : null
         const person = this.props && this.props.history && this.props.history.location && this.props.history.location.state ? this.props.history.location.state.person : null
 //        console.log('person',person)
         if (person) {
@@ -53,7 +50,6 @@ class EditPerson extends Component {
         const person = this.props.person
 //        console.log('in deletePerson',person,this.props,this.state)
         const people = this.props.people
-//        console.log('deletePerson people',people)
         store.dispatch({type: DELETE_PERSON_SUCCESS, people, person})
         this.props.history.push('/')
   }
@@ -62,16 +58,12 @@ class EditPerson extends Component {
         e.preventDefault()
         e.target.reset()
 //        console.log('submitHandler props',this.props,'state',this.state)
-//        const old_name = this.props.old_name
-//        console.log('old_name',old_name)
         const fname = this.state.fname
 //        console.log('fname',fname)
         const lname = this.state.lname
 //        console.log('lname',lname)
         const new_person = {firstName: fname, lastName: lname}
-//        console.log('new_person',new_person)
         this.props.history.push('/')
-//        store.dispatch({type: ADD_PERSON_SUCCESS, people: this.props.people, person: {firstName: fname, lastName: lname}})
         store.dispatch(handleEdit(new_person))
         this.props.history.push('/')
   }

@@ -34,9 +34,7 @@ class App extends Component {
         if (person) {
            newPeople.push(person);
         }
-//        console.log('new people',newPeople)
         store.dispatch({type: GET_PEOPLE, people:newPeople})
-//        this.setState({people: newPeople})
     }
   }
 

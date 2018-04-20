@@ -27,16 +27,7 @@ class Peoples extends Component {
 
   render() {
 //    console.log('People render props',this.props,'state',this.state)
-    const pp = this.props.people
-    const sp = this.state.people
-//    console.log('pp',pp,'sp',sp)
-    let people
-    if (pp) {
-           people = pp.length > sp.length ? pp : sp
-    }  else {
-           people = sp
-    }
-//    console.log('people',people)
+    let people = this.props.people
 // Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
     return (
       <table className="myClass" onClick={this.rowClick}>

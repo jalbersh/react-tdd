@@ -23,16 +23,16 @@ TDD is a requirement in modern software development. The functional nature of Re
 
 This repo contains an empty react app. Your job is to implement the following user stories in TDD fashion:
 
-x-1. Given a browser, when I browse to the site, then I see an "Add Person" button.
-x-1. Given I see the "Add Person" button, when I click it, then I am taken to an Add Person page.
-x-1. Given I am on the Add Person page, when I fill in the fields and click "Add", I am taken back to the list page.
-x-1. Given that I have added a person, when I am on the list page, then I see my people.
-x-1. Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
-x-1. Given I am on the person edit page, when I change a persons name and click Save, then I am taken back to the list page.
-x-1. Given that I have made updates to people, when I am on the list page, I should see the modified information.
-x-1. Given that I am on the edit page, then I see a delete button.
-x-1. Given that I am on the edit page, when I click the delete button, then I am taken back to the list page.
-x-1. Given that I have deleted a person, when I am on the list page, then I no longer see the deleted people.
+* x-1. Given a browser, when I browse to the site, then I see an "Add Person" button.
+* x-1. Given I see the "Add Person" button, when I click it, then I am taken to an Add Person page.
+* x-1. Given I am on the Add Person page, when I fill in the fields and click "Add", I am taken back to the list page.
+* x-1. Given that I have added a person, when I am on the list page, then I see my people.
+* x-1. Given that I see people in the list, when I click a person, I am taken to a Person Edit page.
+* x-1. Given I am on the person edit page, when I change a persons name and click Save, then I am taken back to the list page.
+* x-1. Given that I have made updates to people, when I am on the list page, I should see the modified information.
+* x-1. Given that I am on the edit page, then I see a delete button.
+* x-1. Given that I am on the edit page, when I click the delete button, then I am taken back to the list page.
+* x-1. Given that I have deleted a person, when I am on the list page, then I no longer see the deleted people.
 
 Tips:
 *  Use [simulate](https://github.com/airbnb/enzyme/blob/master/docs/api/ShallowWrapper/simulate.md) to simulate text change and click events
