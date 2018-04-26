@@ -22,29 +22,29 @@ describe("for the AddPerson page", () => {
                          people: people
                     }
                   }
-
     beforeEach(() => {
         const middlewares = [thunk];
         const mockStore = configureStore(middlewares)
         store = configureStore([
             thunk,
                 ])();
-        wrapper = mount(
+        wrapper = shallow(
           <Provider store={store}>
             <AddPerson people={people} location={location}/>
           </Provider>)
     });
 
   it('renders correctly', function() {
-        wrapper = mount(
+        wrapper = shallow(
           <Provider store={store}>
             <AddPerson people={people} location={location}/>
           </Provider>)
+        expect(wrapper).toBeDefined()
   });
 
 //1. Given I am on the Add Person page, when I fill in the fields and click "Add", I am taken back to the list page.
     it("is on the Add Person page, when I fill in fields and click Add, I go back to the list page", () =>{
-        const push = jest.fn();
+        const wrapper = shallow(<AddPerson store={store} people={people} location={location}/>)
         const first = wrapper.find('input').first();
         expect(first).toBeDefined();
         const second = wrapper.find('input').last();
@@ -52,25 +52,16 @@ describe("for the AddPerson page", () => {
     })
 
     it('Add renders button', () => {
-        const button = wrapper.find('button')
+        const button = wrapper.find('button').findWhere(x=>x.text() === 'Add')
         expect(button).toBeDefined();
-        expect(button.text()).toEqual('Add')
-    });
-
-    it('Button click calls history.push', () => {
-      const button = wrapper.find('button').first();
-      const first = wrapper.find('input').first();
-      first.simulate('change', { target: { value: 'james' } });
-      const last = wrapper.find('input').last();
-      last.simulate('change', { target: { value: 'a' } });
-      button.simulate('click');
-      expect(history.push).toHaveBeenCalled;
     });
 
   it('submit event when click submit', () => {
-      const callback = spy();
-      const button = wrapper.find('button').first();
-      button.simulate('click');
-      expect(callback).toHaveBeenCalled;
-  });
+     const submitHandler = spy();
+     const wrapper = mount(<AddPerson store={store} people={people} onSubmit={submitHandler} />);
+     const button = wrapper.find('button').at(0)
+     button.simulate('click');
+     expect(submitHandler).toHaveBeenCalled
+    });
+
 })

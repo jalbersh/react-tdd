@@ -55,7 +55,7 @@ class App extends Component {
 //    console.log('app.render people',people)
     return (
       <div className="App">
-        <button className="addPerson" onClick={this.handleClick}>Add Person</button>
+        <button className="addPerson" id="addPerson" onClick={this.handleClick}>Add Person</button>
         <Peoples people={people} history={ this.props.history } />
       </div>
     )

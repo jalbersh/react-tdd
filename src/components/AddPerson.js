@@ -75,7 +75,7 @@ class AddPerson extends Component {
                   onChange={e => this.setState({lname: e.target.value})}
                 />
               </FormGroup>
-              <Button className="mr-3" type="submit" color="primary">
+              <Button name="add" id="add" className="mr-3" type="submit" color="primary">
                 Add
               </Button>
             </Form>

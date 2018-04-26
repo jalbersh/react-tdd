@@ -22,7 +22,7 @@ describe("reducer: person Reducer", () => {
             let person = { firstName: 'Alan', lastName: 'Turing' }
             let initialState = person
             let payload={person: person};
-            reducer(person, {type: types.ADD_PERSON_STARTED})
+            expect(reducer(person, {type: types.ADD_PERSON_STARTED})).toEqual(person)
         });
     });
     describe("on ADD_PERSON_SUCCESS", () => {
@@ -31,7 +31,7 @@ describe("reducer: person Reducer", () => {
             let person = { firstName: 'Alan', lastName: 'Turing' }
             let initialState = person
             let payload={person: person};
-            reducer(person, {type: types.ADD_PERSON_SUCCESS,person: person})
+            expect(reducer(person, {type: types.ADD_PERSON_SUCCESS,person: person})).toEqual(person)
         });
     });
     describe("on SET_PERSON", () => {
@@ -40,7 +40,7 @@ describe("reducer: person Reducer", () => {
             let person = { firstName: 'Alan', lastName: 'Turing' }
             let initialState = person
             let payload={person: person};
-            reducer(person, {type: types.SET_PERSON,person: person})
+            expect(reducer(person, {type: types.SET_PERSON,person: person})).toEqual(person)
         });
     });
 });

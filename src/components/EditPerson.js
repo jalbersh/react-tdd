@@ -106,10 +106,10 @@ class EditPerson extends Component {
                   onChange={e => this.setState({lname: e.target.value})}
                 />
               </FormGroup>
-              <Button className="mr-3" type="submit" color="primary">
+              <Button className="mr-3" id="edit" name="edit" type="submit" color="primary">
                 Edit
               </Button>
-              <Button className="mr-3" type="button" onClick={this.deletePerson} color="primary">
+              <Button className="mr-3" it="delete" name="delete" type="button" onClick={this.deletePerson} color="primary">
                 Delete
               </Button>
             </Form>

@@ -26,9 +26,6 @@ describe('async actions', () => {
         middlewares = [thunk];
         mockStore = configureStore(middlewares)
         store = mockStore({ people: people })
-//        store = configureStore([
-//            thunk,
-//                ])();
         wrapper = mount(
           <Provider store={store}>
             <App people={people}/>
